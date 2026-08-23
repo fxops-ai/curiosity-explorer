@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Curiosity Explorer",
+      "hasCanvas": false,
+      "bodyTextLen": 211,
+      "bodyTextHash": "195f4574c6d47f9b2a8e63bb3ab44d8a10cc19a4d143d8eb3e9eebd9181defbe",
+      "bodyTextPrefix": "Curiosity Explorer Path memory for thought Stay in the question.",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Curiosity Explorer",
+      "hasCanvas": false,
+      "bodyTextLen": 211,
+      "bodyTextHash": "195f4574c6d47f9b2a8e63bb3ab44d8a10cc19a4d143d8eb3e9eebd9181defbe",
+      "bodyTextPrefix": "Curiosity Explorer Path memory for thought Stay in the question.",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

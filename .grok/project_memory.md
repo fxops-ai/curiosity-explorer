@@ -1,0 +1,1 @@
+- Curiosity Explorer project: PRD saved as artifacts/Curiosity-Explorer-PRD.md [2026-08-23]. Renamed from CCT (Curiosity Continuity Tree). Personal open-source tool for preserving curiosity momentum via conversation trees, path memory, re-entry briefings, ticklers, and up to 4 split windows. Local-first, single-HTML export priority.
