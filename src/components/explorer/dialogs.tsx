@@ -96,12 +96,12 @@ export function SettingsDialog({
         <DialogHeader>
           <DialogTitle>Model</DialogTitle>
           <DialogDescription>
-            Default uses Grok on the server. A custom OpenAI-compatible URL talks
-            from this browser (local Ollama, LM Studio, etc.).
+            Grok runs on the server. OpenAI, Anthropic, and Custom talk from this
+            browser. Keys stay on this device and are never exported.
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-3">
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button
               type="button"
               variant={settings.provider === "xai" ? "default" : "outline"}
@@ -111,23 +111,81 @@ export function SettingsDialog({
             </Button>
             <Button
               type="button"
+              variant={settings.provider === "openai" ? "default" : "outline"}
+              onClick={() => onChange({ provider: "openai" })}
+            >
+              OpenAI
+            </Button>
+            <Button
+              type="button"
+              variant={settings.provider === "anthropic" ? "default" : "outline"}
+              onClick={() => onChange({ provider: "anthropic" })}
+            >
+              Anthropic
+            </Button>
+            <Button
+              type="button"
               variant={settings.provider === "custom" ? "default" : "outline"}
               onClick={() => onChange({ provider: "custom" })}
             >
-              Custom endpoint
+              Custom
             </Button>
           </div>
+
+          {settings.provider === "openai" ? (
+            <>
+              <Label>Model</Label>
+              <Input
+                value={settings.openaiModel}
+                onChange={(e) => onChange({ openaiModel: e.target.value })}
+                placeholder="gpt-4o"
+              />
+              <Label>API key (stored locally)</Label>
+              <Input
+                type="password"
+                value={settings.openaiApiKey}
+                onChange={(e) => onChange({ openaiApiKey: e.target.value })}
+                placeholder="sk-…"
+              />
+            </>
+          ) : null}
+
+          {settings.provider === "anthropic" ? (
+            <>
+              <Label>Model</Label>
+              <Input
+                value={settings.anthropicModel}
+                onChange={(e) => onChange({ anthropicModel: e.target.value })}
+                placeholder="claude-sonnet-4-20250514"
+              />
+              <Label>API key (stored locally)</Label>
+              <Input
+                type="password"
+                value={settings.anthropicApiKey}
+                onChange={(e) => onChange({ anthropicApiKey: e.target.value })}
+                placeholder="sk-ant-…"
+              />
+              <p className="text-xs text-muted">
+                Native Anthropic Messages API lands in v2. For now this uses the
+                OpenAI-compatible path; use Custom + a proxy if you need full
+                compatibility today.
+              </p>
+            </>
+          ) : null}
+
           {settings.provider === "custom" ? (
             <>
               <Label>Base URL</Label>
               <Input
                 value={settings.customBaseUrl}
                 onChange={(e) => onChange({ customBaseUrl: e.target.value })}
+                placeholder="http://localhost:11434/v1"
               />
               <Label>Model</Label>
               <Input
                 value={settings.customModel}
                 onChange={(e) => onChange({ customModel: e.target.value })}
+                placeholder="llama3.1"
               />
               <Label>API key (stored locally)</Label>
               <Input
