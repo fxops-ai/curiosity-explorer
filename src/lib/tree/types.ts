@@ -56,8 +56,17 @@ export type ExplorerTree = {
   openItems: OpenItem[];
 };
 
+export type LlmProvider = "xai" | "openai" | "anthropic" | "custom";
+
 export type LlmSettings = {
-  provider: "xai" | "custom";
+  provider: LlmProvider;
+  // OpenAI (browser → api.openai.com)
+  openaiApiKey: string;
+  openaiModel: string;
+  // Anthropic (browser; native Messages API deferred to v2 — uses OpenAI-compatible path for now)
+  anthropicApiKey: string;
+  anthropicModel: string;
+  // Custom / local OpenAI-compatible endpoint
   customBaseUrl: string;
   customApiKey: string;
   customModel: string;
