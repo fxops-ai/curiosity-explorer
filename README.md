@@ -43,9 +43,8 @@ Trees live **on this device** (IndexedDB). They are not a multi-user cloud brain
 
 - **Fast outline first.** The default view is an indented path, not a heavy canvas. The **Map** control opens a drawer of the full tree; click a node to jump.
 - **Inference is user-initiated.** Sends, briefings, and similar calls happen when you act — not on every keystroke.
-- **Default model is Grok** (server-side, when the host environment provides it). A **custom OpenAI-compatible endpoint** can be set in Settings (for example a local server). CORS and the local process are your responsibility.
-- **Not yet:** MCP servers as inference backends, first-class multi-provider API-key vaults, automatic branch suggestions, real-time collab, or guaranteed fully-offline generation without a configured local endpoint.
-- **Coming next:** local *or* cloud providers via **API key** or **MCP server**, so you can keep Grok, point at Ollama / LM Studio / other OpenAI-compatible hosts, or plug an MCP inference server without changing how the tree works.
+- **Local-first data.** Trees stay in the browser. Export is the portable unit.
+- **Providers today:** Grok (server), OpenAI, Anthropic (settings ready; native API in v2), and any OpenAI-compatible **Custom** endpoint (Ollama, LM Studio, proxies). MCP inference servers remain a future option.
 
 If a turn fails, the assistant node stores the error in place. The path is still there; try again or switch provider in Settings.
 
@@ -90,18 +89,20 @@ After a gap (or if ticklers exist), a **Welcome back** briefing appears. Resume 
 
 ### Header controls (left to right, typical)
 
-Explorations · New · Map · Export HTML · Ticklers / pause · Settings (Grok vs custom endpoint).
+Explorations · New · Map · Export HTML · Ticklers / pause · Settings (Grok / OpenAI / Anthropic / Custom).
 
 ---
 
-## Settings (inference today)
+## Settings (inference)
 
-| Mode | Behavior |
-| --- | --- |
-| **Grok** | Uses the host’s Grok API when available. No key to paste in the browser. |
-| **Custom endpoint** | Browser calls `{base URL}/chat/completions` with your model name and optional key stored **locally**. Typical local bases look like an OpenAI-compatible `/v1` URL on your machine. |
+| Provider | Where it runs | Notes |
+| --- | --- | --- |
+| **Grok** | Server | Uses the host’s xAI / Grok API when available. No key to paste in the browser. |
+| **OpenAI** | Browser | Calls `https://api.openai.com/v1`. Paste your API key (stored **locally** only). Default model `gpt-4o`. |
+| **Anthropic** | Browser | Settings UI is ready. Native Messages API is deferred to v2; for now it uses the OpenAI-compatible path. Use **Custom** + a proxy if you need full Anthropic compatibility today. Default model `claude-sonnet-4-20250514`. |
+| **Custom** | Browser | Any OpenAI-compatible base URL (Ollama, LM Studio, OpenRouter, local proxies, etc.). Base URL + model + optional key stored **locally**. |
 
-The tree, ticklers, and export do not depend on a model. You can still navigate and ship HTML if inference is down.
+Keys never leave this device and are **not** included in HTML exports. The tree, ticklers, and export do not depend on a model — you can still navigate and ship HTML if inference is down.
 
 ---
 
@@ -129,6 +130,8 @@ Curiosity Explorer was designed and prototyped with **Grok Build**. The hosted a
 
 ---
 
-## License intent
+## License
 
-This prototype is intended for open source. The repository is public; add a LICENSE (MIT is typical) when you are ready. Application data in IndexedDB is yours; do not commit exploration dumps that contain private thought you do not want in git.
+MIT — see [LICENSE](./LICENSE).
+
+Application data in IndexedDB is yours. Do not commit exploration dumps that contain private thought you do not want in git.
