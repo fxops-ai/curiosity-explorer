@@ -7,6 +7,10 @@ const META_KEY = "ce-meta";
 
 const defaultSettings: LlmSettings = {
   provider: "xai",
+  openaiApiKey: "",
+  openaiModel: "gpt-4o",
+  anthropicApiKey: "",
+  anthropicModel: "claude-sonnet-4-20250514",
   customBaseUrl: "http://localhost:11434/v1",
   customApiKey: "",
   customModel: "llama3.1",
