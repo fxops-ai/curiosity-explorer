@@ -23,7 +23,7 @@
     "@radix-ui/react-scroll-area": "^1.2.10",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-router": "^1.157.16",
-    "@tanstack/react-start": "^1.157.16",
+    "@tanstack/react-start": "^1.169.3",
     "@tanstack/router-plugin": "^1.157.16",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
